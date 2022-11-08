@@ -1,0 +1,30 @@
+.header-main {
+    height: 300px;
+    max-height: 300px;
+    border-bottom: 1px solid black;
+    background-image: url('https://fandomwire.com/wp-content/uploads/2018/08/Movies-background.png');
+}
+
+.header-search-section {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.search-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-input {
+    width: 500px;
+    background-color: black;
+    height: 35px;
+}
+
+.search-button {
+    background-color: #F65261;
+    border: none;
+    width: 100px;
+    height: 36px;
+    color: white;
+}
