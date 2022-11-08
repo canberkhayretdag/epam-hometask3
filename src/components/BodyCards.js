@@ -1,16 +1,33 @@
 import React, {useState} from 'react'
 import SingleCard from './SingleCard'
+import EditMovie from "./EditMovie";
 
-function BodyCards() {
-  const [data, setData] = useState(require('../data.json'));
+function BodyCards({data, dataHandler}) {
+  const [selectedMovie, setSelectedMovie] = useState();
+
+  const handleSelect = (movie) => {
+    setSelectedMovie(movie)
+  }
 
   return (
     <div className='body-cards-main row row-cols-3'>
         { 
         data.movies.map((movie, index) => {
-            return <SingleCard movie={movie} key={index} />
+            return (
+              <>
+                <SingleCard data={data} movie={movie} movieNumber={index} key={index} dataHandler={dataHandler} handleSelect={handleSelect} />
+                <>
+                  { selectedMovie ? 
+                    <EditMovie data={data} selectedMovie={selectedMovie} movieNumber={index} dataHandler={dataHandler} />
+                    :
+                    <></>
+                  }
+                </>
+              </>
+            )
         })
         }
+        
     </div>
   )
 }

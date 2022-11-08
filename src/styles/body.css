@@ -29,3 +29,6 @@
     
 }
 
+.clickable {
+    cursor: pointer;
+}
