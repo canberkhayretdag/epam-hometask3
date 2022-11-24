@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import SingleCard from './SingleCard'
 import EditMovie from "./EditMovie";
 
-function BodyCards({data, dataHandler}) {
+function BodyCards({data, movieHandler, dataHandler}) {
   const [selectedMovie, setSelectedMovie] = useState();
 
   const handleSelect = (movie) => {
@@ -15,7 +15,7 @@ function BodyCards({data, dataHandler}) {
         data.movies.map((movie, index) => {
             return (
               <>
-                <SingleCard data={data} movie={movie} movieNumber={index} key={index} dataHandler={dataHandler} handleSelect={handleSelect} />
+                <SingleCard data={data} movieHandler={movieHandler} movie={movie} movieNumber={index} key={index} dataHandler={dataHandler} handleSelect={handleSelect} />
                 <>
                   { selectedMovie ? 
                     <EditMovie data={data} selectedMovie={selectedMovie} movieNumber={index} dataHandler={dataHandler} />

@@ -3,11 +3,11 @@ import '../styles/body.css'
 import BodyCards from './BodyCards'
 import BodyMenu from './BodyMenu'
 
-function Body({data, dataHandler}) {
+function Body({data, movieHandler, dataHandler}) {
   return (
     <div className='body-main'>
         <BodyMenu />
-        <BodyCards data={data} dataHandler={dataHandler} />
+        <BodyCards data={data} movieHandler={movieHandler} dataHandler={dataHandler} />
     </div>
   )
 }

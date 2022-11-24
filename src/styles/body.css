@@ -25,8 +25,11 @@
     padding-inline: 35px;
 }
 
-.single-card-main {
-    
+.cart-detail-main {
+    background-color: #232323;
+    height: 600px;
+    max-height: 600px;
+    color: white
 }
 
 .clickable {
