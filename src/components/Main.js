@@ -1,13 +1,23 @@
-import React, {useState, useEffect, useParams} from 'react'
+import React, { useState, useEffect, useParams, createContext, useCallback } from 'react'
 import Body from './Body'
 import Header from './Header'
 
+export const MovieContext = createContext()
+
+const useDataLoader = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    setData(require('../data.json'))
+  }, [])
+  return data
+}
+
 function Main() {
-  const [data, setData] = useState(require('../data.json'));
+  const [data, setData] = useState();
   const [reload, setReload] = useState(false)
   const [handledMovie, setHandledMovie] = useState()
 
-  const movieHandler = (id) => {
+  const movieHandler = useCallback ((id) => {
     data.movies.forEach(movie => {
       if (movie.id === id) {
         setReload(true)
@@ -17,7 +27,7 @@ function Main() {
         }, 1000);
       }
     });
-  }
+  }, [data])
 
   const clearMovie = () => {
     setReload(true)
@@ -35,11 +45,11 @@ function Main() {
     }, 1000);
   }
 
-   if (!reload) { return(
-    <>
+   if (data) { return(
+    <MovieContext.Provider value={data}>
         <Header data={data} clearMovie={clearMovie} movie={handledMovie} movieHandler={movieHandler} dataHandler={dataHandler}  />
         <Body data={data} movieHandler={movieHandler} dataHandler={dataHandler} />
-    </>
+    </MovieContext.Provider>
   )} else {
     return <h1>Loading...</h1>
   }

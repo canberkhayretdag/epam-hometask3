@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import SingleCard from './SingleCard'
 import EditMovie from "./EditMovie";
+import { MovieContext } from "./Main"
 
 function BodyCards({data, movieHandler, dataHandler}) {
   const [selectedMovie, setSelectedMovie] = useState();
@@ -9,10 +10,12 @@ function BodyCards({data, movieHandler, dataHandler}) {
     setSelectedMovie(movie)
   }
 
+  const db = useContext(MovieContext);
+
   return (
     <div className='body-cards-main row row-cols-3'>
         { 
-        data.movies.map((movie, index) => {
+          db.movies.map((movie, index) => {
             return (
               <>
                 <SingleCard data={data} movieHandler={movieHandler} movie={movie} movieNumber={index} key={index} dataHandler={dataHandler} handleSelect={handleSelect} />
