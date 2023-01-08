@@ -2,10 +2,12 @@ import React, {useState, useContext} from 'react'
 import SingleCard from './SingleCard'
 import EditMovie from "./EditMovie";
 import { MovieContext } from "./Main"
+import { useDispatch, useSelector } from 'react-redux'
+import { setMovies } from '../redux/movies'
 
 function BodyCards({data, movieHandler, dataHandler}) {
   const [selectedMovie, setSelectedMovie] = useState();
-
+  const { movieList } = useSelector((state) => state.movies)
   const handleSelect = (movie) => {
     setSelectedMovie(movie)
   }
@@ -15,7 +17,7 @@ function BodyCards({data, movieHandler, dataHandler}) {
   return (
     <div className='body-cards-main row row-cols-3'>
         { 
-          db.movies.map((movie, index) => {
+          movieList.map((movie, index) => {
             return (
               <>
                 <SingleCard data={data} movieHandler={movieHandler} movie={movie} movieNumber={index} key={index} dataHandler={dataHandler} handleSelect={handleSelect} />

@@ -13,12 +13,17 @@
 
 .body-menu-main li {
     display: inline;
-    padding: 8px;
+    padding: 18px;
 }
 
 .body-menu-line {
     border-bottom: 1px solid gray;
     margin-inline: 35px;
+}
+
+.clickable {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .body-cards-main {

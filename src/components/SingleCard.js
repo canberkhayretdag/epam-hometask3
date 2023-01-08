@@ -8,9 +8,9 @@ function SingleCard(props) {
     <>
       <div className="col" data-bs-toggle="modal" data-bs-target="#exampleModal2">
         <div className="card">
-          <img src={props.movie.Poster} onClick={() => props.handleSelect(props.movie)} className="card-img-top clickable" alt="..." />
+          <img src={props.movie.poster_path} onClick={() => props.handleSelect(props.movie)} className="card-img-top clickable" alt="..." />
           <div className="card-body">
-            <h5 className="card-title">{props.movie.Title}</h5>
+            <h5 className="card-title">{props.movie.title}</h5>
             <p className="clickable" onClick={() => props.movieHandler(props.movie.id)}>Click to see details</p>
           </div>
         </div>
